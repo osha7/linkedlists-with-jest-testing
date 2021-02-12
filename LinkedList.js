@@ -37,6 +37,17 @@ class LinkedList {
         return current
     }
 
+    insertAtIndex(index, value) {
+        if (index === 0) return this.prepend(value)
+
+        const prev = this.getByIndex(index - 1)
+        if (prev === null) return null
+
+        // take prev.next and set it to new node
+        prev.next = new LinkedListNode(value, prev.next)
+        this.length++
+    }
+
     //helper function / loop through and print our linked list - more readable
     print() {
         let output = ''
