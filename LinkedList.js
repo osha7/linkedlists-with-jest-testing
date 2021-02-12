@@ -23,7 +23,29 @@ class LinkedList {
 
         //add 1 to length because we added a node:
         this.length++
+    }
 
+    getByIndex(index) {
+        //slower function than if we did this with arrays
+
+        if (index < 0 || index >= this.length) return null
+
+        let current = this.head // always have to start at head and move forward till we get value we want
+        for (let i = 0; i < index; i++) {//starting at 0 which is our head
+            current = current.next
+        }
+        return current
+    }
+
+    //helper function / loop through and print our linked list - more readable
+    print() {
+        let output = ''
+        let current = this.head
+        while (current) {
+            output = `${output}${current.value} -> `
+            current = current.next
+        }
+        console.log(`${output}null`)
     }
 }
 
@@ -33,6 +55,17 @@ class LinkedListNode {
         this.value = value
         this.next = next
     }
+}
+
+// simple helper function on our linked list that allows us to create a linked list from an array of values:
+LinkedList.fromValues = function(...values ) {
+    const ll = new LinkedList()
+
+    //loop over these values in reverse order
+    for (let i = values.length - 1; i >= 0; i--) {
+        ll.prepend(values[i])
+    }
+    return ll
 }
 
 module.exports = LinkedList
