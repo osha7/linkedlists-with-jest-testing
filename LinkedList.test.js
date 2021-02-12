@@ -115,3 +115,49 @@ describe('#removeAtHead', () => {
         expect(ll.length).toBe(2)
     })
 })
+
+describe('#removeAtIndex', () => {
+    describe('with index less than 0', () => {
+        test('it does not remove anything', () => {
+            const ll = LinkedList.fromValues(10, 20)
+            ll.removeAtIndex(-1)
+            
+            expect(ll.length).toBe(2)
+        })
+    })
+
+    // trying to find element at index that is greater than length of our array
+    describe('with index greater than list length', () => {
+        test('it does not remove anything', () => {
+            const ll = LinkedList.fromValues(10, 20)
+            ll.removeAtIndex(5)
+            
+            expect(ll.length).toBe(2)
+        })
+    })
+
+    //what happens when we try to get very first element in our array:
+    describe('with index 0', () => {
+        test('remove the head', () => {
+            const ll = LinkedList.fromValues(10, 20, 30)
+            ll.removeAtIndex(0)
+            
+            expect(ll.head.value).toBe(20)
+            expect(ll.head.next.value).toBe(30)
+            expect(ll.length).toBe(2)
+        })
+    })
+
+    //get a particular index in the middle
+    describe('with index in the middle', () => {
+        test('remove at the given index', () => {
+            const ll = LinkedList.fromValues(10, 20, 30, 40)
+            ll.removeAtIndex(2)
+            const node = ll.getByIndex(1)
+            
+            expect(node.value).toBe(20)
+            expect(node.next.value).toBe(40)
+            expect(ll.length).toBe(3)
+        })
+    })
+})

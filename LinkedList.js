@@ -36,11 +36,6 @@ class LinkedList {
         return current
     }
 
-    removeHead() {
-        this.head = this.head.next
-        this.length--
-    }
-
     insertAtIndex(index, value) { // Big O(n) because we might need to potentially loop through every one of our elements 
         if (index === 0) return this.prepend(value)
 
@@ -50,6 +45,22 @@ class LinkedList {
         // take prev.next and set it to new node
         prev.next = new LinkedListNode(value, prev.next)
         this.length++
+    }
+
+    removeHead() {
+        this.head = this.head.next
+        this.length--
+    }
+
+    removeAtIndex(index) {
+        if (index === 0) return this.removeHead()
+
+        const prev = this.getByIndex(index - 1)
+        if (prev === null) return null
+
+        // take prev.next and set it to value of next node after deleted node
+        prev.next = prev.next.next
+        this.length--
     }
 
     //helper function / loop through and print our linked list - more readable

@@ -53,10 +53,19 @@
 
 // ------------------------------------------------------------------------
 
+// const LinkedList = require('./LinkedList')
+
+// const ll = LinkedList.fromValues(10, 20, 30, 40)
+// ll.print() // ===>  10 -> 20 -> 30 -> 40 -> null
+// ll.removeHead()
+// ll.print() // ===>  20 -> 30 -> 40 -> null
+
+// ------------------------------------------------------------------------
+
 const LinkedList = require('./LinkedList')
 
 const ll = LinkedList.fromValues(10, 20, 30, 40)
 ll.print() // ===>  10 -> 20 -> 30 -> 40 -> null
-ll.removeHead()
-ll.print() // ===>  20 -> 30 -> 40 -> null
+ll.removeAtIndex(2)
+ll.print() // ===>  10 -> 20 -> 40 -> null
 
