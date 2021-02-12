@@ -9,8 +9,7 @@ class LinkedList {
         // ^^ so we can keep track of our list length as we add or remove elements (nodes)
     }
 
-    // insertAtHead(data) {
-    prepend(value) {    
+    prepend(value) {  // insertAtHead(data) {
         // add elements to beginning of list
 
         //take current head of array and replace it 
@@ -37,7 +36,12 @@ class LinkedList {
         return current
     }
 
-    insertAtIndex(index, value) {
+    removeHead() {
+        this.head = this.head.next
+        this.length--
+    }
+
+    insertAtIndex(index, value) { // Big O(n) because we might need to potentially loop through every one of our elements 
         if (index === 0) return this.prepend(value)
 
         const prev = this.getByIndex(index - 1)
