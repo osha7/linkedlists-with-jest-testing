@@ -69,3 +69,5 @@ ll.print() // ===>  10 -> 20 -> 30 -> 40 -> null
 ll.removeAtIndex(2)
 ll.print() // ===>  10 -> 20 -> 40 -> null
 
+ll.deleteByValue(30)
+ll.print()
